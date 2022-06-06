@@ -1,0 +1,13 @@
+version: "3"
+services:
+  app:
+    image: node:16
+    volumes:
+      - ./:/usr/src
+      - app_modules:/usr/src/node_modules #node_modulesはコンテナ内部で用意します
+    working_dir: "/usr/src"
+    command: sh -c "yarn && yarn dev"
+    ports:
+      - "80:3000"
+volumes:
+  app_modules:
